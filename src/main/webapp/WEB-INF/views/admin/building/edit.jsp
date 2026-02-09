@@ -118,103 +118,121 @@
 
                 <!-- Bảng danh sách -->
                 <div class="row" style="font-family: 'Times New Roman', Times, serif;">
-                    <div class="col-xs-12">
-                        <form class="form-horizontal" role="form" id="form-edit">
-                            <div class="form-group">
-                                <label class="col-xs-3">Tên tòa nhà</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control" type="text" id="name" name="name">
+                    <form:form modelAttribute="buildingEdit" id="listForm" method="GET">
+                        <div class="col-xs-12">
+                            <form class="form-horizontal" role="form" id="form-edit">
+                                <div class="form-group">
+                                    <label class="col-xs-3">Tên tòa nhà</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control" type="text" id="name" name="name">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label id="districtid" class="col-xs-3" name="districtid">Quận</label>
-                                <div class="col-xs-3">
-                                    <select class="form-control">
-                                        <option value="">---Chọn Quận---</option>
-                                        <option value="1">Quận 1</option>
-                                        <option value="2">Quận 2</option>
-                                        <option value="3">Quận 3</option>
-                                        <option value="4">Quận 10</option>
-                                    </select>
+                                <div class="form-group">
+                                    <label id="districtid" class="col-xs-3" name="districtid">Quận</label>
+                                    <div class="col-xs-3">
+                                        <select class="form-control">
+                                            <option value="">---Chọn Quận---</option>
+                                            <option value="1">Quận 1</option>
+                                            <option value="2">Quận 2</option>
+                                            <option value="3">Quận 3</option>
+                                            <option value="4">Quận 10</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-xs-3">Phuong</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control" type="text" id="ward" name="ward">
+                                <div class="form-group">
+                                    <label class="col-xs-3">Phuong</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control" type="text" id="ward" name="ward">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-xs-3">Duong</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control" type="text" id="street" name="street">
+                                <div class="form-group">
+                                    <label class="col-xs-3">Duong</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control" type="text" id="street" name="street">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-xs-3">Ket cau</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control" type="text" id="structure" name="structure">
+                                <div class="form-group">
+                                    <label class="col-xs-3">Ket cau</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control" type="text" id="structure" name="structure">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-xs-3">So tang ham</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control" type="number" id="numberofbasement"
-                                           name="numberofbasement">
+                                <div class="form-group">
+                                    <label class="col-xs-3">So tang ham</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control" type="number" id="numberofbasement"
+                                               name="numberofbasement">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-xs-3">Dien tich san</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control" type="number" id="floorarea" name="floorarea">
+                                <div class="form-group">
+                                    <label class="col-xs-3">Dien tich san</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control" type="number" id="floorarea" name="floorarea">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-xs-3">Huong</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control" type="text" id="direction" name="direction">
+                                <div class="form-group">
+                                    <label class="col-xs-3">Huong</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control" type="text" id="direction" name="direction">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-xs-3">Hang</label>
-                                <div class="col-xs-9">
-                                    <input class="form-control" type="text" id="level" name="level">
+                                <div class="form-group">
+                                    <label class="col-xs-3">Hang</label>
+                                    <div class="col-xs-9">
+                                        <input class="form-control" type="text" id="level" name="level">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-xs-3">Loại tòa nhà</label>
-                                <div class="col-xs-9">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="typeCode" name="typeCode" value="noi-that">Nội thất
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="typeCode" name="typeCode" value="nguyen-can">Nguyên
-                                        căn
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="typeCode" name="typeCode" value="tang-tret">Tầng trệt
-                                    </label>
+                                <div class="form-group">
+                                    <label class="col-xs-3">Loại tòa nhà</label>
+                                    <div class="col-xs-9">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="typeCode" name="typeCode" value="noi-that">Nội
+                                            thất
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="typeCode" name="typeCode" value="nguyen-can">Nguyên
+                                            căn
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="typeCode" name="typeCode" value="tang-tret">Tầng
+                                            trệt
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-xs-3"></label>
-                                <div class="col-xs-9">
-                                    <button type="button" class="btn btn-primary" id="btnAddBuilding">Thêm tòa nhà
-                                    </button>
-                                    <button type="button" class="btn btn-primary">Hủy thao tác</button>
+                                <div class="form-group">
+                                    <label class="col-xs-3"></label>
+                                    <div class="col-xs-9">
+                                        <c:if test="${not empty buildingEdit.id}">
+                                            <button type="button" class="btn btn-primary" id="btnAddBuilding">
+                                                Cập nhật tòa nhà
+                                            </button>
+                                            <button type="button" class="btn btn-primary">
+                                                Hủy thao tác
+                                            </button>
+                                        </c:if>
+
+                                        <c:if test="${empty buildingEdit.id}">
+                                            <button type="button" class="btn btn-primary" id="btnAddBuilding">
+                                                Thêm mới
+                                            </button>
+                                            <button type="button" class="btn btn-primary">
+                                                Hủy thao tác
+                                            </button>
+                                        </c:if>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+                    </form:form>
                 </div>
             </div>
         </div>
