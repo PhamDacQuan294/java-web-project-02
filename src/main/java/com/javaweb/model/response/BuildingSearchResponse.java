@@ -13,10 +13,10 @@ public class BuildingSearchResponse extends AbstractDTO {
 	private String managerPhone;
 	private Long floorArea;
 	private String rentArea;
-    private String emptyArea;
-    private Long rentPrice;
-    private String serviceFee;
-    private Double brokerageFee;
+	private String emptyArea;
+	private Long rentPrice;
+	private String serviceFee;
+	private Double brokerageFee;
 
 	public Long getId() {
 		return id;
