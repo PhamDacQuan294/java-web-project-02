@@ -301,7 +301,7 @@
           <tbody>
           </tbody>
         </table>
-        <input type="hidden" id="buildingId" name="building" value="">
+        <input type="hidden" id="buildingId" name="buildingId" value="">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" id="btnassignmentBuilding">Giao tòa nhà</button>
@@ -315,7 +315,7 @@
     function assignmentBuilding(buildingId) {
         $('#assignmentBuildingModal').modal();
         loadStaff();
-        $('#buildingId').val();
+        $('#buildingId').val(buildingId);
     }
 
     function loadStaff(buildingId) {
@@ -355,8 +355,29 @@
             return $(this).val();
         }).get();
         data['staffs'] = staffs;
+        if(data['staffs'] != '') {
+          assignment(data);
+        }
         console.log("OK");
     });
+
+    function assignment(data) {
+        $.ajax({
+            url: '${buildingAPI}' + 'assignment',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (response) {
+                console.info("Success");
+            },
+            error: function (response) {
+                console.info("Giao Không Thành Công!");
+                window.location.href = '<c:url value="/admin/building-list?message=error"/>';
+                console.log(response);
+            }
+        });
+    }
 
     $('#btnSearchBuilding').click(function (e) {
         e.preventDefault();
