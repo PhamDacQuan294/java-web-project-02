@@ -299,69 +299,6 @@
           </thead>
 
           <tbody>
-          <tr>
-            <td class="center">
-              <input type="checkbox" id="checkbox_1" value="1">
-            </td>
-            <td>
-              Nguyễn Văn A
-            </td>
-          </tr>
-          <tr>
-            <td class="center">
-              <input type="checkbox" id="checkbox_2" value="3">
-            </td>
-            <td>
-              Trần Văn C
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <input type="hidden" id="buildingId" name="building" value="">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="btnassignmentBuilding">Giao tòa nhà</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="assignmentBuildingModal" role="dialog"
-     style="font-family: 'Times New Roman', Times, serif;">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Danh sách nhân viên</h4>
-      </div>
-      <div class="modal-body">
-        <table style="margin: 3em 0 0;" class="table table-striped table-bordered table-hover" id="staffList">
-          <thead>
-          <tr>
-            <th>Chọn</th>
-            <th>Tên Nhân Viên</th>
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr>
-            <td class="center">
-              <input type="checkbox" id="checkbox_1" value="1">
-            </td>
-            <td>
-              Nguyễn Văn A
-            </td>
-          </tr>
-          <tr>
-            <td class="center">
-              <input type="checkbox" id="checkbox_2" value="3">
-            </td>
-            <td>
-              Trần Văn C
-            </td>
-          </tr>
           </tbody>
         </table>
         <input type="hidden" id="buildingId" name="building" value="">
@@ -377,6 +314,37 @@
 <script>
     function assignmentBuilding(buildingId) {
         $('#assignmentBuildingModal').modal();
+        loadStaff();
+        $('#buildingId').val();
+    }
+
+    function loadStaff(buildingId) {
+      $.ajax({
+          type: 'GET',
+          url: 'api/building/' + buildingId + '/staffs',
+          // data: JSON.stringify(data),
+          contentType: 'application/json',
+          dataType: 'JSON',
+          success: function (response) {
+              var row = '';
+              $.each(response.data, function (index, item) {
+                  row += '<tr>';
+                  row += '<td class="text-center"><input type="checkbox" value=' + item.staffId +
+                      ' id=checkbox_' + item.staffId + ' class = "check-box-element"' +
+                      item.checked + ' /></td>';
+                  row += '<td class="text-center">' + item.fullName + '</td>';
+                  row += '</tr>';
+              });
+
+              $('#staffList tbody').html(row);
+              console.info("success");
+          },
+          error: function (response) {
+              console.log('failed');
+              window.location.href = "<c:url value='/admin/building-list?message=error'/>";
+              console.log(response);
+          }
+      });
     }
 
     $('#btnassignmentBuilding').click(function (e) {
